@@ -1,0 +1,66 @@
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.totalCard {
+  background-color: gainsboro;
+  color: black;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.totalCard p {
+  margin: 0;
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+.totalCard h1 {
+  margin-top: 10px;
+  font-size: 40px;
+}
+
+/* 📊 Status List */
+.statusList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.statusItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f5f6fa;
+  font-weight: 500;
+  border-left: 6px solid;
+}
+
+/* 🎨 Left Border Colors */
+
+.applied {
+  border-color: #0984e3;
+}
+
+.interview {
+  border-color: #fdcb6e;
+}
+
+.offer {
+  border-color: #00b894;
+}
+
+.rejected {
+  border-color: #d63031;
+}

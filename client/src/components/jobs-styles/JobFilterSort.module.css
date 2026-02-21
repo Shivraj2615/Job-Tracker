@@ -1,0 +1,51 @@
+.jobFilter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.jobFilter label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.jobFilter select {
+  padding: 8px 12px;
+  font-size: 13px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #ffffff;
+  transition: 0.2s ease;
+}
+
+.jobFilter select:focus {
+  border-color: #4f46e5;
+  outline: none;
+}
+
+.jobSort {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.jobSort label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.jobSort select {
+  padding: 8px 12px;
+  font-size: 13px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #ffffff;
+  transition: 0.2s ease;
+}
+
+.jobSort select:focus {
+  border-color: #4f46e5;
+  outline: none;
+}

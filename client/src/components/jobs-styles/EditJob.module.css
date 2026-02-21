@@ -1,0 +1,131 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(17, 24, 39, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.modalBox {
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1.5px solid #e5e7eb;
+  padding: 32px;
+}
+
+.modalTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #111827;
+}
+
+.editForm {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 24px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formGroup label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.formGroup input,
+.formGroup textarea {
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #ffffff;
+  transition: 0.2s ease;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  border-color: #4f46e5;
+  outline: none;
+}
+
+.formGroup textarea {
+  min-height: 90px;
+  resize: vertical;
+  grid-column: span 2;
+}
+
+.modalButtons {
+  grid-column: span 2;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.btnPrimary {
+  padding: 10px 16px;
+  background-color: #4f46e5;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: 0.2s ease;
+}
+
+.btnPrimary:hover {
+  background-color: #4338ca;
+}
+
+.btnPrimary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btnSecondary {
+  padding: 10px 16px;
+  background-color: #f3f4f6;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: 0.2s ease;
+}
+
+.btnSecondary:hover {
+  background-color: #e5e7eb;
+}
+
+@media (max-width: 768px) {
+  .editForm {
+    grid-template-columns: 1fr;
+  }
+
+  .formGroup textarea {
+    grid-column: span 1;
+  }
+
+  .modalButtons {
+    grid-column: span 1;
+    justify-content: stretch;
+  }
+
+  .modalButtons button {
+    width: 100%;
+  }
+}

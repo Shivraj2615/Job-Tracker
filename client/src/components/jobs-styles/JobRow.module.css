@@ -1,0 +1,96 @@
+.row {
+  transition: background 0.2s ease;
+}
+
+.row:hover {
+  background-color: #f9fafb;
+}
+
+.cell {
+  padding: 12px 14px;
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+
+.link {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.statusSelect {
+  padding: 6px 10px;
+  border-radius: 20px;
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.applied {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+.interview {
+  background-color: #fef9c3;
+  color: #92400e;
+}
+
+.offer {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.rejected {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.actionsWrapper {
+  display: flex;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+
+.button {
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.2s ease;
+}
+
+.history {
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+
+.history:hover {
+  background-color: #c7d2fe;
+}
+
+.edit {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.edit:hover {
+  background-color: #fde68a;
+}
+
+.delete {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.delete:hover {
+  background-color: #fecaca;
+}
