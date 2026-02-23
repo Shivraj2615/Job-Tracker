@@ -31,7 +31,10 @@ export const JobsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchJobs();
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetchJobs();
+    }
   }, [filters]);
 
   // Add New Job
@@ -74,9 +77,7 @@ export const JobsProvider = ({ children }) => {
       );
     } catch (error) {
       setJobs((prev) =>
-        prev.map((job) =>
-          job._id === jobId ? previousJob : job,
-        ),
+        prev.map((job) => (job._id === jobId ? previousJob : job)),
       );
 
       setError("Failed to update job");
