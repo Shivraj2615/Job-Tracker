@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { JobsContext } from "../../context/JobsContext";
 import { useNavigate } from "react-router-dom";
 import styles from "../jobs-styles/AddJob.module.css";
+import { toast } from "react-toastify";
 
 const jobObj = {
   company: "",
@@ -32,13 +33,20 @@ export default function AddJob() {
     e.preventDefault();
 
     if (!formData.company || !formData.position || !formData.appliedDate) {
-      alert("Company, Position & Applied Date are required");
+      toast.warning("Company, Position & Applied Date are required");
       return;
     }
 
-    addJob(formData);
-    setFormData(jobObj);
-    navigate("/jobs");
+    const result = await addJob(formData);
+
+    if (result.success) {
+      setFormData(jobObj);
+      navigate("/jobs");
+
+      toast.success(result.message);
+    } else {
+      toast.error(result.message);
+    }
   };
 
   return (

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Auth.module.css";
+import { toast } from "react-toastify";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -11,21 +12,27 @@ export default function Register() {
   const { loading, register } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!name || !email || !password) {
-      alert("All Fields are required");
+      toast.warning("All Fields are required");
       return;
     }
 
-    register(name, email, password);
+    const result = await register(name, email, password);
 
-    setName("");
-    setEmail("");
-    setPassword("");
+    if (result.success) {
+      setName("");
+      setEmail("");
+      setPassword("");
 
-    navigate("/login");
+      navigate("/login");
+
+      toast.success(result.message);
+    } else {
+      toast.error(result.message);
+    }
   };
 
   return (

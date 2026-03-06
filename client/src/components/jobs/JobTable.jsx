@@ -6,6 +6,7 @@ import JobFilter from "./JobFilter";
 import EditJob from "./EditJob";
 import StatusTimeline from "./StatusTimeline";
 import styles from "../jobs-styles/JobTable.module.css";
+import { toast } from "react-toastify";
 
 export default function JobTable() {
   const { jobs, updateJob, deleteJob, filters, setFilters } =
@@ -14,9 +15,15 @@ export default function JobTable() {
   const [selectedJob, setSelectedJob] = useState(null);
   const [modalType, setModalType] = useState(null);
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this job?")) {
-      deleteJob(id);
+      const result = await deleteJob(id);
+
+      if (result.success) {
+        toast.success(result.message);
+      } else {
+        toast.error(result.message);
+      }
     }
   };
 

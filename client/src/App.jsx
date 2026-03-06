@@ -11,6 +11,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import AddJob from "./components/jobs/AddJob";
 import JobTable from "./components/jobs/JobTable";
 import Dashboard from "./pages/DashBoard";
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
   return (
@@ -37,6 +38,16 @@ export default function App() {
       </main>
 
       <Footer />
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="colored"
+      />
     </div>
   );
 }

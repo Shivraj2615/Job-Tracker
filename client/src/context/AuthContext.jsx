@@ -28,11 +28,23 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (name, email, password) => {
     setLoading(true);
+
     try {
       const res = await api.post("/auth/register", { name, email, password });
+
+      return {
+        success: true,
+        message: res?.data?.message || "Registration Successful",
+      };
     } catch (error) {
-      console.error(error.message);
-      setError("Something went wrong");
+      console.error(error.response?.data?.message);
+
+      setError(error.response?.data?.message || "Registration Failed");
+
+      return {
+        success: false,
+        message: error.response?.data?.message || "Registration Failed",
+      };
     } finally {
       setLoading(false);
     }
@@ -40,13 +52,26 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     setLoading(true);
+
     try {
       const res = await api.post("/auth/login", { email, password });
+
       setToken(res.data.token);
       setUser(res.data.user);
+
+      return {
+        success: true,
+        message: res?.data?.message || "Logged Successful",
+      };
     } catch (error) {
-      console.error(error.message);
-      setError("Something went wrong");
+      console.error(error.response?.data?.message);
+
+      setError(error.response?.data?.message || "Login Failed");
+
+      return {
+        success: false,
+        message: error.response?.data?.message || "Registration Failed",
+      };
     } finally {
       setLoading(false);
     }

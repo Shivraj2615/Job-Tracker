@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { JobsContext } from "../../context/JobsContext";
 import styles from "../jobs-styles/EditJob.module.css";
+import { toast } from "react-toastify";
 
 const EditJob = ({ job, onClose }) => {
   const { loading, updateJobDetails } = useContext(JobsContext);
@@ -27,12 +28,12 @@ const EditJob = ({ job, onClose }) => {
     e.preventDefault();
 
     if (!formData.company.trim() || !formData.position.trim()) {
-      alert("Company and Position are required");
+      toast.warning("Company and Position are required");
       return;
     }
 
     if (formData.followUpDate < formData.appliedDate) {
-      alert("Follow-up date cannot be before applied date");
+      toast.warning("Follow-up date cannot be before applied date");
       return;
     }
 
@@ -40,6 +41,9 @@ const EditJob = ({ job, onClose }) => {
 
     if (result.success) {
       onClose();
+      toast.success(result.message);
+    } else {
+      toast.error(result.message);
     }
   };
 
