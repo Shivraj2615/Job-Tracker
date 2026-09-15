@@ -12,6 +12,7 @@ import AddJob from "./components/jobs/AddJob";
 import JobTable from "./components/jobs/JobTable";
 import Dashboard from "./pages/DashBoard";
 import { ToastContainer } from "react-toastify";
+import Intelligence from "./pages/Intelligence";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
             <Route path="/jobs" element={<JobTable />} />
             <Route path="/jobs/add" element={<AddJob />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/analyze-jd" element={<Intelligence />} />
           </Route>
 
           <Route element={<PublicRoute />}>
@@ -41,7 +43,7 @@ export default function App() {
 
       <ToastContainer
         position="top-right"
-        autoClose={3000}
+        autoClose={2000}
         hideProgressBar={false}
         closeOnClick
         pauseOnHover

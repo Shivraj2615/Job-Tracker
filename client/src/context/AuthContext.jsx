@@ -6,13 +6,16 @@ export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const loadUser = async () => {
       const token = getToken();
-      if (!token) return;
+      if (!token) {
+        setLoading(false);
+        return;
+      }
 
       try {
         const res = await api.get("/auth/me", { headers: getAuthHeaders() });
@@ -20,6 +23,8 @@ export const AuthProvider = ({ children }) => {
       } catch (error) {
         removeToken();
         setUser(null);
+      } finally {
+        setLoading(false);
       }
     };
 
