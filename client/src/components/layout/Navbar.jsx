@@ -48,6 +48,18 @@ export default function Navbar() {
               >
                 Dashboard
               </Link>
+              <Link
+                className={`${styles.link} ${styles.primary}`}
+                to="/analyze-jd"
+              >
+                JD Analysis
+              </Link>
+              <Link
+                className={`${styles.link} ${styles.primary}`}
+                to="/match-resume"
+              >
+                Resume Match
+              </Link>
               <button className={styles.logoutButton} onClick={handleLogout}>
                 Logout
               </button>

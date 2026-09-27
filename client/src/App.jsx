@@ -13,6 +13,7 @@ import JobTable from "./components/jobs/JobTable";
 import Dashboard from "./pages/DashBoard";
 import { ToastContainer } from "react-toastify";
 import Intelligence from "./pages/Intelligence";
+import ResumeMatch from "./pages/ResumeMatch";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
             <Route path="/jobs/add" element={<AddJob />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/analyze-jd" element={<Intelligence />} />
+            <Route path="/match-resume" element={<ResumeMatch />} />
           </Route>
 
           <Route element={<PublicRoute />}>

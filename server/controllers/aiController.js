@@ -14,3 +14,28 @@ module.exports.analyzeJD = async (req, res) => {
     result: analysisResult,
   });
 };
+
+module.exports.matchResume = async (req, res) => {
+  const { resumeText, jobDescription } = req.body;
+
+  if (
+    !resumeText ||
+    resumeText.trim() === "" ||
+    !jobDescription ||
+    jobDescription.trim() === ""
+  ) {
+    return res
+      .status(400)
+      .json({ error: "Both resume text and job description are required" });
+  }
+
+  const matchResult = await aiService.matchResumeToJobDescription(
+    resumeText,
+    jobDescription,
+  );
+
+  return res.status(200).json({
+    message: "Resume matching endpoint is working!",
+    result: matchResult,
+  });
+};

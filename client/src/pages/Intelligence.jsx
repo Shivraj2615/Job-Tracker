@@ -1,6 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
-import "./Intelligence.css";
+import { api, getAuthHeaders } from "../api/axios";
+import "./AI.css";
 
 const Intelligence = () => {
   const [jobDescription, setJobDescription] = useState("");
@@ -13,16 +13,10 @@ const Intelligence = () => {
     try {
       setLoading(true);
 
-      const token = localStorage.getItem("token");
-
-      const response = await axios.post(
-        "http://localhost:5000/api/ai/analyze-jd",
+      const response = await api.post(
+        "/ai/analyze-jd",
         { jobDescription },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
+        { headers: getAuthHeaders() },
       );
 
       setAnalysis(response.data.result);
