@@ -1,8 +1,4 @@
-const { GoogleGenAI } = require("@google/genai");
-
-const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY,
-});
+const { generateWithFallback } = require("./aiProvider");
 
 module.exports.analyzeJobDescription = async (jobDescription) => {
   const prompt = `
@@ -31,14 +27,9 @@ Job Description:
 ${jobDescription}
 `;
 
-  const response = await ai.models.generateContent({
-    model: "gemini-3.6-flash",
-    contents: prompt,
-  });
+  const response = await generateWithFallback(prompt);
 
-  const text = response.text;
-
-  const cleanedText = text
+  const cleanedText = response
     .replace(/```json/g, "")
     .replace(/```/g, "")
     .trim();
@@ -88,14 +79,9 @@ Job Description:
 ${jobDescription}
 `;
 
-  const response = await ai.models.generateContent({
-    model: "gemini-3.6-flash",
-    contents: prompt,
-  });
+  const response = await generateWithFallback(prompt);
 
-  const text = response.text;
-
-  const cleanedText = text
+  const cleanedText = response
     .replace(/```json/g, "")
     .replace(/```/g, "")
     .trim();

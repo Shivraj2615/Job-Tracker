@@ -7,6 +7,7 @@ const ResumeMatch = () => {
   const [jobDescription, setJobDescription] = useState("");
   const [matchResult, setMatchResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const matchResume = async () => {
     if (!resumeText.trim() || !jobDescription.trim()) return;
@@ -22,7 +23,12 @@ const ResumeMatch = () => {
 
       setMatchResult(response.data.result);
     } catch (error) {
-      console.error(error);
+      console.error("Resume matching error:", error);
+
+      setError(
+        error.response?.data?.error ||
+          "Something went wrong. Please try again.",
+      );
     } finally {
       setLoading(false);
     }
@@ -85,6 +91,12 @@ const ResumeMatch = () => {
           </button>
         </div>
       </div>
+
+      {error && (
+        <div className="ai-error-message" role="alert">
+          {error}
+        </div>
+      )}
 
       {matchResult && (
         <div className="match-result-section">

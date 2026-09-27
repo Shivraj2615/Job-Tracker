@@ -352,3 +352,14 @@
     padding-bottom: 25px;
   }
 }
+
+.ai-error-message {
+  margin-top: 20px;
+  padding: 14px 18px;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 14px;
+  line-height: 1.6;
+}

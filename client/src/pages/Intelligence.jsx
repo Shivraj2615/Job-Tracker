@@ -6,6 +6,7 @@ const Intelligence = () => {
   const [jobDescription, setJobDescription] = useState("");
   const [analysis, setAnalysis] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const analyzeJD = async () => {
     if (!jobDescription.trim()) return;
@@ -21,7 +22,12 @@ const Intelligence = () => {
 
       setAnalysis(response.data.result);
     } catch (error) {
-      console.error(error);
+      console.error("JD analysis error:", error);
+
+      setError(
+        error.response?.data?.error ||
+          "Something went wrong. Please try again.",
+      );
     } finally {
       setLoading(false);
     }
@@ -67,6 +73,12 @@ const Intelligence = () => {
           </button>
         </div>
       </div>
+
+      {error && (
+        <div className="ai-error-message" role="alert">
+          {error}
+        </div>
+      )}
 
       {analysis && (
         <div className="analysis-section">
